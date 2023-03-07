@@ -1,0 +1,36 @@
+# This workflow will build a MuleSoft project and deploy to CloudHub
+
+name: Maven build Fetching "settings.xml"
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+     
+    steps:
+    
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Cache Depenedencies
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: maven
+    
+    - name: Build with maven
+      run: mvn -B clean package -s .maven/settings.xml
+        
+    - name: Upload artifact 
+      uses: actions/upload-artifact@master
+      with:
+          name: artifacts
+          path: target/*.jar
+    - uses: actions/download-artifact@master
+      with:
+        name: artifacts          

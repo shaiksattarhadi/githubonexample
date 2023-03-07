@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <groupId>com.India.common</groupId>
+    <artifactId>lib</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+    <version>${revision}-${changelist}</version>
+    <description>Logging Framework</description>
+    <packaging>pom</packaging>
+    <properties>
+        <revision>1.1.0</revision>
+        <changelist>SNAPSHOT</changelist>
+        <ilo.fli.version>${revision}-${changelist}</ilo.fli.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <prefix></prefix>
+    </properties>
+    <modules>
+        <module>lib1</module>
+        <module>lib2</module>
+        <module>lib3</module>
+  
+    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.4.1</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

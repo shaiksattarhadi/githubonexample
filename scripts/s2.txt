@@ -1,0 +1,30 @@
+#!/bin/bash
+# 
+# Author: 	Robert Bernhard (rober15)
+# Purpose: 	Shell script to grant roles and privileges to the gcp cloud build user.
+#           That user is used for cloud build and terraform actions.
+
+read -e -p 'GCP Project Id:'  -i 'ingka-ilo-fmspoc-dev' GCP_PROJECT_ID
+
+echo Granting Roles and Privileges to Project Identifier: ${GCP_PROJECT_ID} and Project Number: ${GCP_PROJECT_NUMBER}
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/cloudbuild.workerPoolUser" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/cloudbuild.builds.builder" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/cloudfunctions.admin" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/cloudtrace.agent" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/compute.storageAdmin" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/iam.serviceAccountCreator" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/iam.serviceAccountUser" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/resourcemanager.projectIamAdmin" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/run.admin" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/secretmanager.secretAccessor" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/storage.admin" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/pubsub.admin" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/iam.serviceAccountDeleter" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/iam.serviceAccountKeyAdmin" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/secretmanager.admin" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/monitoring.uptimeCheckConfigEditor" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/logging.configWriter" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/monitoring.editor" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/serviceusage.serviceUsageAdmin" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/servicemanagement.admin" --condition=None
+gcloud projects add-iam-policy-binding ${GCP_PROJECT_ID} --member="serviceAccount:sa-fmspoc-ci-cd@${GCP_PROJECT_ID}.iam.gserviceaccount.com" --role="roles/firebase.admin" --condition=None
