@@ -34,13 +34,24 @@ jobs:
     
     - name: Checkout repository
       uses: actions/checkout@v2
-    
     - name: Cache Depenedencies
       uses: actions/setup-java@v2
       with:
         java-version: '11'
         distribution: 'adopt'
-        cache: maven
+        cache: maven      
+    - name: Filter modules
+      id: modules
+      run: |
+        modules=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | grep "pom.xml" | cut -d "/" -f1 | uniq)
+        echo "::set-output name=modules::$modules"
+
+    - name: Clean modules
+      run: |
+        for module in ${{ steps.modules.outputs.modules }}; do
+          cd $module
+          mvn -B clean package -s .maven/settings.xml
+          cd ..
+        done    
+
     
-    - name: Build with maven
-      run: mvn -B clean package -s .maven/settings.xml
